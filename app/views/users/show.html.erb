@@ -24,6 +24,8 @@
           <%= @user.youtube %>
         </div>
       </p>
+
+      <%= render "relationships/follow_button", user: @user %>
       
       <% if @user == current_user %>
         <%= link_to "編集", edit_user_registration_path(@user) %>
