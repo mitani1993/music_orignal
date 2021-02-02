@@ -2,13 +2,17 @@ class RelationshipsController < ApplicationController
   before_action :set_user
 
   def create
-    current_user.follow(@user)
-    redirect_to user_path(@user)
+    if current_user.follow(@user)
+      respond_to :js
+    else
+      render "users/show"
+    end
   end
 
   def destroy
-    current_user.unfollow(@user)
-    redirect_to user_path(@user)
+    if current_user.unfollow(@user)
+      respond_to :js
+    end
   end
 
   private
