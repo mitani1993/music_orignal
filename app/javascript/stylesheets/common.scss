@@ -1,5 +1,6 @@
 body {
-  background: url(../images/concert.jpg)center no-repeat;
+  background: url(../images/concert.jpg);
+  background-repeat:repeat-y;
   background-size: cover;
   height: 100vh;
   padding: 0;
