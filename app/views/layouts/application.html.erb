@@ -13,5 +13,13 @@
 
   <body>
     <%= yield %>
+    <div class="logout">
+      <% if user_signed_in? %>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fas fa-sign-out-alt"></i>
+          <h1>ログアウト</h1>
+        <% end %>
+      <% end %>
+    </div>
   </body>
 </html>
