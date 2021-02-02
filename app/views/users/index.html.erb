@@ -7,7 +7,11 @@
     <% @users.each do |user| %>
       <%= link_to user_path(user) do %>
         <div class="card">
-          <%= image_tag user.image, class: "bd-placeholder-img card-img-top" %>
+          <% if user.image.blank? %>
+            <%= image_tag 'no_image.png', class: "bd-placeholder-img card-img-top" %>
+          <% else %>
+            <%= image_tag user.image, class: "bd-placeholder-img card-img-top" %>
+          <% end %>
           <div class="card-body text-center">
             <%= user.name %>
           </div>
