@@ -3,4 +3,5 @@ Rails.application.routes.draw do
     controllers: { registrations: 'registrations' }
   root 'top#index'
   resources :users, only: [:index, :show]
+  resources :relationships, only: [:create, :destroy]
 end

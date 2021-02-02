@@ -1,0 +1,4 @@
+<%=  form_with modle: @relationship, url: relationship_path(@user), method: :delete do |f| %>
+  <%= f.hidden_field :follow_id, value: @user.id %>
+  <%= f.submit "アピール済", class: "btn btn-info" %>
+<% end %>
