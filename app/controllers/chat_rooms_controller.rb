@@ -16,6 +16,6 @@ class ChatRoomsController < ApplicationController
   def show
     @chat_room = ChatRoom.find(params[:id])
     @chat_room_user = @chat_room.room_users.where.not(user_id: current_user.id).first.user
-    @chat_messages = Message.where(chat_room: @chat_room).limit(15).order(created_at: "DESC")
+    @chat_messages = Message.where(chat_room: @chat_room).last(15)
   end
 end
