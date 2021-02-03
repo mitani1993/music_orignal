@@ -6,9 +6,9 @@
       <%= link_to user_path(user) do %>
         <div class="card">
           <% if user.image.blank? %>
-            <%= image_tag 'no_image.png', class: "bd-placeholder-img card-img-top" %>
+            <%= image_tag 'no_image.png', class: "matching__person-default-img" %>
           <% else %>
-            <%= image_tag user.image, class: "bd-placeholder-img card-img-top" %>
+            <%= image_tag user.image, class: "matching__person-default-img" %>
           <% end %>
           <div class="card-body text-center">
             <%= user.name %>
