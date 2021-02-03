@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   #アソシエーション
+  has_many :room_users
+  has_many :chat_rooms, through: :room_users
   has_one_attached :image
   #フォローしているユーザーとのアソシエーション
   has_many :relationships,foreign_key: "user_id", dependent: :destroy
