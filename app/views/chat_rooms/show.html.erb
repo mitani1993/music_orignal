@@ -1,1 +1,15 @@
 <%= render "layouts/navbar" %>
+
+<p>チャットルームページ</p>
+
+<div id='chat-messages'>
+  <div class="chat-message">
+    <% @chat_messages.each do |message| %>
+      <%= chat_message.message %>
+    <% end %>
+  </div>
+</div>
+
+<form>
+  <textarea data-behavior="chat_room_speaker" data-chat_room_id="<%= @chat_room.id %>" placeholder="メッセージを入力" class="chat-room__message-form_textarea"></textarea>
+</form>
