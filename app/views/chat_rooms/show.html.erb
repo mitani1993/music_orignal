@@ -1,0 +1,24 @@
+<%= render "layouts/navbar" %>
+
+<div class="chat-room-show-page">
+  <nav class="navbar navbar-light chat-room__header">
+    <div class="chat-room__partner">
+      <% if @chat_room_user.image.blank? %>
+        <%= image_tag 'no_image.png', class: "chat-room__partner-default-img" %>
+      <% else %>
+        <%= image_tag @chat_room_user.image, class: "chat-room__partner-default-img" %>
+      <% end %>
+      <span class="chat-room__partner-name">
+        <%= @chat_room_user.name %>
+      </span>
+    </div>
+  </nav>
+
+  <div id='chat-messages'>
+    <%= render partial: 'messages/chat_message', collection: @chat_messages %>
+  </div>
+
+  <form class="chat-room__message-form">
+    <textarea data-behavior="chat_room_speaker" data-chat_room_id="<%= @chat_room.id %>" placeholder="メッセージを入力" class="chat-room__message-form_textarea"></textarea>
+  </form>
+</div>

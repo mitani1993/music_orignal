@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :relationships, only: [:create, :destroy]
   resources :matching, only: :index
+  resources :chat_rooms, only: [:create, :show]
 end
