@@ -1,0 +1,29 @@
+<%= render "layouts/navbar" %>
+
+<div class="matching-index-page">
+  <div class="matching">
+    <p class="matching-title ml-3">マッチング一覧</p>
+    <p class="matching-num">マッチング中のお相手 <%= @match_users.size %>人</p>
+
+    <div class="matching__list">
+      <% unless @match_users.empty? %>
+        <% @match_users.each do |user| %>
+         <div class="matching__person">
+
+           <% if user.image.nil? %>
+             <div class="matching__person-default-img"></div>
+           <% else %>
+             <%= image_tag user.image, class: "matching__person-img" %>
+           <% end %>
+
+           <div class="matching__person-name">
+             <%= user.name %>
+           </div>
+
+         </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+</div>
