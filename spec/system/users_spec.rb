@@ -116,5 +116,20 @@ RSpec.describe "ログイン", type: :system do
         expect(current_path).to eq(new_user_session_path)
       end
     end
+
+    context 'ログインしているとき' do
+      it 'ログインするとマイページに遷移する'do
+        #サインインする
+        sign_in(@user)
+        #マイページに名前、活動地域、属性が表示されている
+        expect(page).to have_content(@user.name)
+        expect(page).to have_content(@user.area.name)
+        expect(page).to have_content(@user.profession.name)
+        #編集ボタンがある
+        expect(page).to have_content("編集")
+        #アピールボタンがない
+        expect(page).to have_no_content("アピールする")
+      end
+    end
   end
 end
