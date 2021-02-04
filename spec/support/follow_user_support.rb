@@ -4,6 +4,5 @@ module FollowUserSupport
     expect(page).to have_button("アピールする")
     click_on 'アピールする'
     expect(page).to have_button("アピール済")
-    click_on 'ログアウト'
   end
 end
