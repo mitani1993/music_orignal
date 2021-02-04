@@ -101,6 +101,20 @@ RSpec.describe "ログイン", type: :system do
       end
     end
 
-    
+    context 'ログインしていないとき' do
+      it 'ユーザー一覧ページにアクセスしたときサインページに遷移する' do
+        #ユーザー一覧にアクセス
+        visit users_path
+        #サインインページに遷移する
+        expect(current_path).to eq(new_user_session_path)
+      end
+
+      it 'ユーザー詳細ページにアクセスしたときサインページに遷移する' do
+        #ユーザー詳細ページ
+        visit user_path(@user)
+        #サインインページに遷移する
+        expect(current_path).to eq(new_user_session_path)
+      end
+    end
   end
 end
