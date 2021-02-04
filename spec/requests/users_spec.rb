@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe "Users", type: :request do
   before do
     @user = FactoryBot.create(:user)
+    @another_user = FactoryBot.create(:user)
+    sleep 0.5
   end
 
   describe "GET #index" do
@@ -30,11 +32,40 @@ RSpec.describe "Users", type: :request do
         expect(response.status).to eq 200
       end
 
-      it '他のユーザーページにリクエストすると正常にレスポンスが返ってくる' do
-        another_user = FactoryBot.create(:user)
+      it 'マイページにリクエストすると自分の名前が表示される' do
         sign_in @user
-        get user_path(another_user)
+        get user_path(@user)
+        expect(response.body).to include(@user.name)
+      end
+
+      it 'マイページにリクエストすると自分の属性が表示される' do
+        sign_in @user
+        get user_path(@user)
+        expect(response.body).to include(@user.profession.name)
+      end
+
+      it 'マイページにリクエストすると自分の活動地域が表示される' do
+        sign_in @user
+        get user_path(@user)
+        expect(response.body).to include(@user.area.name)
+      end
+
+      it '他のユーザーページにリクエストすると正常にレスポンスが返ってくる' do
+        sign_in @user
+        get user_path(@another_user)
         expect(response.status).to eq 200
+      end
+
+      it '他のユーザーがマイページにリクエストすると正常にレスポンスが返ってくる' do
+        sign_in @another_user
+        get user_path(@user)
+        expect(response.status).to eq 200
+      end
+
+      it '他のユーザーがマイページにリクエストするとアピールボタンがある' do
+        sign_in @another_user
+        get user_path(@user)
+        expect(response.body).to include("アピールする")
       end
     end
 
@@ -45,8 +76,7 @@ RSpec.describe "Users", type: :request do
       end
 
       it '他のユーザーページにリクエストするとログイン画面に遷移する' do
-        another_user = FactoryBot.create(:user)
-        get user_path(another_user)
+        get user_path(@another_user)
         expect(response.status).to eq 302
       end
     end
