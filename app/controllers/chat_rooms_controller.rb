@@ -1,4 +1,5 @@
 class ChatRoomsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     #自分がいるチャットルームを取得
