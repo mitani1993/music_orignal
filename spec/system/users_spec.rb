@@ -60,6 +60,7 @@ end
 RSpec.describe "ログイン", type: :system do
   before do
     @user = FactoryBot.create(:user)
+    @another_user = FactoryBot.create(:user)
   end
   context 'ログインができるとき' do
     it '保存されているユーザーの情報と合致すればログインができる' do
@@ -129,6 +130,51 @@ RSpec.describe "ログイン", type: :system do
         expect(page).to have_content("編集")
         #アピールボタンがない
         expect(page).to have_no_content("アピールする")
+      end
+
+      it '他のユーザーページを閲覧する'do
+        #サインインする
+        sign_in(@user)
+        #他のユーザーページにアクセスする
+        visit user_path(@another_user)
+        #名前、活動地域、属性が表示されている
+        expect(page).to have_content(@another_user.name)
+        expect(page).to have_content(@another_user.area.name)
+        expect(page).to have_content(@another_user.profession.name)
+        #編集ボタンがない
+        expect(page).to have_no_content("編集")
+        #アピールボタンがある
+        expect(page).to have_button("アピールする")
+      end
+
+      it '他のユーザーにアピールを送る'do
+        #サインインする
+        sign_in(@user)
+        #他のユーザーページにアクセスする
+        visit user_path(@another_user)
+        #アピールボタンがある
+        expect(page).to have_button("アピールする")
+        #アピールボタンを押す
+        click_on 'アピールする'
+        #アピールボタンがアピール済に変わる
+        expect(page).to have_button("アピール済")
+      end
+
+      it '他のユーザーのアピールを外す'do
+        #サインインする
+        sign_in(@user)
+        #他のユーザーページにアクセスする
+        visit user_path(@another_user)
+        #アピールボタンがある
+        expect(page).to have_button("アピールする")
+        #アピールボタンを押す
+        click_on 'アピールする'
+        #アピールボタンがアピール済に変わる
+        expect(page).to have_button("アピール済")
+        #アピールを外す
+        click_on 'アピール済'
+        #アピール済がアピールするに変わる
+        expect(page).to have_button("アピールする")
       end
     end
   end
