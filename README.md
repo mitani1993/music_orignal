@@ -13,6 +13,7 @@
 | profession_id      | integer   | null: false
 
 ### Association
+- has_many :sns_credentials
 - has_many :room_users
 - has_many :chat_rooms, through: :room_users
 - has_many :messages
@@ -63,3 +64,13 @@
 ### Association
 - belongs_to :user
 - belongs_to :chat_room
+
+## sns_credentialsテーブル
+| Column        | Type      | Options     
+| -------       | ------    | ----------- 
+| provider      | string    |  
+| uid           | string    |  
+| user          | reference | foreign_key: true
+
+### Association
+- belongs_to :user
