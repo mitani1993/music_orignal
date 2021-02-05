@@ -21,8 +21,8 @@
       <br>
 
       <div class="d-flex flex-column text-center">
-        <%= link_to "Facebookでサインインする", "#", class: "facebook" %>
-        <%= link_to "Googleでサインインする", "#", class: "google" %>
+        <%= link_to "Facebookでサインインする", user_facebook_omniauth_authorize_path, method: :post, class: "facebook" %>
+        <%= link_to "Googleでサインインする", user_google_oauth2_omniauth_authorize_path, method: :post, class: "google" %>
       </div>
 
       <p class="devise-link">
