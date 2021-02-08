@@ -1,7 +1,7 @@
 <%= render "layouts/navbar" %>
 
 <div class=" card-wrap d-flex justify-content-center">
-  <div class="card text-center" style="width: 40rem;">
+  <div class="card text-center card-show">
     <% if @user.image.blank? %>
       <%= image_tag 'no_image.png', class: "bd-placeholder-img card-img-top" %>
     <% else %>
@@ -11,24 +11,32 @@
       <h1 class="card-title">
         <%= @user.name %>
       </h1>
+      <%= render "relationships/follow_button", user: @user %>
       <hr>
       <p class="card-text">
-        <div class="show-name">
+        <div class="show-name">活動形式</div>
+        <div class="show-content">
           <%= @user.profession.name %>
         </div>
-        <div class="show-name">
+
+        <div class="show-name">地域</div>
+        <div class="show-content">
           <%= @user.area.name %>
         </div>
-        <div class="show-name">
+
+        <div class="show-name">自己紹介</div>
+        <div class="show-content">
           <%= @user.profile %>
         </div>
-        <div class="show-name">
-          <%= @user.youtube %>
+
+        <% if @url.present? %>
+          <div class="show-name">Youtube URL</div>
+          <div class="show-youtube">
+            <iframe src="https://www.youtube.com/embed/<%= @url %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <% end %>
         </div>
       </p>
 
-      <%= render "relationships/follow_button", user: @user %>
-      
       <% if @user == current_user %>
         <%= link_to "編集", edit_user_registration_path(@user) %>
       <% end %>

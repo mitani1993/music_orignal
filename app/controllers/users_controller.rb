@@ -11,5 +11,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @url = @user.youtube.last(11)
   end
 end
