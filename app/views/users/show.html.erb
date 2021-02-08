@@ -1,7 +1,7 @@
 <%= render "layouts/navbar" %>
 
 <div class=" card-wrap d-flex justify-content-center">
-  <div class="card text-center" style="width: 40rem";>
+  <div class="card text-center card-show">
     <% if @user.image.blank? %>
       <%= image_tag 'no_image.png', class: "bd-placeholder-img card-img-top" %>
     <% else %>

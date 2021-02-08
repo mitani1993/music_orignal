@@ -1,8 +1,10 @@
 .card-wrap {
-  margin: 40px 0px;
+  margin: 0auto;
 }
-
-
+.card-show{
+  width: 700px;
+  margin-bottom: 20px;
+}
 
 .show-name{
   font-size: 16px;
@@ -18,4 +20,14 @@
 .show-youtube{
   padding-top: 5px;
   width: 100%;
+}
+
+@media screen and (max-width: 479px) {
+  .card-show{
+    width: 300px;
+  }
+
+  .show-youtube{
+    width: 80px;
+  }
 }
