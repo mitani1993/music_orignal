@@ -11,6 +11,7 @@
       <h1 class="card-title">
         <%= @user.name %>
       </h1>
+      <%= render "relationships/follow_button", user: @user %>
       <hr>
       <p class="card-text">
         <div class="show-name">活動形式</div>
@@ -28,14 +29,14 @@
           <%= @user.profile %>
         </div>
 
-        <div class="show-name">Youtube URL</div>
-        <div class="show-content">
-          <%= @user.youtube %>
+        <% if @url.present? %>
+          <div class="show-name">Youtube URL</div>
+          <div class="show-youtube">
+            <iframe src="https://www.youtube.com/embed/<%= @url %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <% end %>
         </div>
       </p>
 
-      <%= render "relationships/follow_button", user: @user %>
-      
       <% if @user == current_user %>
         <%= link_to "編集", edit_user_registration_path(@user) %>
       <% end %>
