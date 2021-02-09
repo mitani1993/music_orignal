@@ -1,8 +1,8 @@
-<div class="card-index">
-  <div class="card-deck">
+<div class="card-index d-flex justify-content-center">
+  <div class="row">
     <% @users.each do |user| %>
-      <%= link_to user_path(user) do %>
-        <div class="card">
+      <div class="col-lg-4 col-sm-6">
+        <%= link_to user_path(user), class: "card" do %>
           <% if user.image.blank? %>
             <%= image_tag 'no_image.png', class: "bd-placeholder-img card-img-top img-index" %>
           <% else %>
@@ -11,8 +11,8 @@
           <div class="card-body text-center">
             <%= user.name %>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
