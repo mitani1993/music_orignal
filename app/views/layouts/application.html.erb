@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <% unless current_page?(root_path) %>
+    <% unless %w[root user_session new_user_registration].any? { |name| current_page?(send("#{name}_path")) } %>
       <%= render "layouts/navbar" %>
     <% end %>
     <%= yield %>
@@ -26,3 +26,5 @@
     </div>
   </body>
 </html>
+
+
