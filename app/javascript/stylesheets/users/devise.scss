@@ -9,6 +9,17 @@
   box-sizing: border-box;
 }
 
+.main-edit{
+  max-width: 960px;
+  margin: 0 auto;
+  width: 90%;
+  padding: 0px 75px 100px;
+  display: block;
+  flex: 1;
+  flex-basis: auto;
+  box-sizing: border-box;
+}
+
 .form-control {
   border: 1px solid #dcdfe6;
   font-size: inherit;
