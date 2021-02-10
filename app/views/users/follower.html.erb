@@ -1,18 +1,18 @@
-<div class="matching-index-page">
-  <div class="matching">
-    <p class="matching-title ml-3">フォロワー一覧</p>
-    <p class="matching-num">あなたにアピールを送ったひと <%= @user.followers.size %>人</p>
-    <div class="matching__list">
+<div class="follow-index-page">
+  <div class="follow">
+    <p class="follow-title ml-3">フォロワー一覧</p>
+    <p class="follow-num">あなたにアピールを送ったひと <%= @user.followers.size %>人</p>
+    <div class="follow__list">
       <% unless @user.followers.empty? %>
         <% @user.followers.each do |user| %>
           <%= link_to user_path(user) do %>
-          <div class="matching__person">
+          <div class="follow__person">
             <% if user.image.blank? %>
-              <%= image_tag 'no_image.png', class: "matching__person-img" %>
+              <%= image_tag 'no_image.png', class: "follow__person-img" %>
             <% else %>
-              <%= image_tag user.image, class: "matching__person-img" %>
+              <%= image_tag user.image, class: "follow__person-img" %>
             <% end %>
-            <div class="matching__person-name">
+            <div class="follow__person-name">
               <%= user.name %>
             </div>
           </div>
