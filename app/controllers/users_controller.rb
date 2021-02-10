@@ -12,7 +12,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @url = @user.youtube.last(11)
+    if @user.youtube.present?
+      @url = @user.youtube.last(11)
+    else
+      @url = nil
+    end
   end
 
   def search
