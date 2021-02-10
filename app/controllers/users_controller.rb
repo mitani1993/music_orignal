@@ -26,6 +26,10 @@ class UsersController < ApplicationController
     @results = @p.result
   end
 
+  def follower
+    @user = User.find(params[:id])
+  end
+
   private
 
   def search_user
