@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :search_user, only: [:search]
+  before_action :search_user, only: [:search, :result]
 
   def index
     if current_user.profession_id != 5
@@ -16,6 +16,9 @@ class UsersController < ApplicationController
   end
 
   def search
+  end
+
+  def result
     @results = @p.result
   end
 

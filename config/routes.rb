@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show] do
     collection do
       get 'search'
+      get 'result'
     end
   end
   resources :relationships, only: [:create, :destroy]
