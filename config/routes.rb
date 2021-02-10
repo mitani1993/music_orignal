@@ -8,6 +8,10 @@ Rails.application.routes.draw do
       get 'search'
       get 'result'
     end
+    member do
+      get 'follower'
+      get 'followed'
+    end
   end
   resources :relationships, only: [:create, :destroy]
   resources :matching, only: :index
