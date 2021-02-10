@@ -1,0 +1,6 @@
+<%= search_form_for @p, url: search_users_path do |f| %>
+  <%= f.label 'ユーザー名' %>
+  <%= f.collection_select(:area_id_eq, Area.where.not(id: 1), :id, :name, include_blank: '指定なし') %>
+  <%= f.collection_select(:profession_id_eq, Profession.where.not(id: 1), :id, :name, include_blank: '指定なし') %>
+  <%= f.submit '検索' %>
+<% end %>

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :search_product, only: [:index, :search]
+  before_action :search_user, only: [:search]
 
   def index
     if current_user.profession_id != 5
@@ -16,12 +16,12 @@ class UsersController < ApplicationController
   end
 
   def search
-    @result = @p.result
+    @results = @p.result
   end
 
   private
 
-  def search_product
+  def search_user
     @p = User.ransack(params[:q])
   end
 end
