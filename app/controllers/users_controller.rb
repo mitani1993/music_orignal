@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :search_user, only: [:search, :result]
 
   def index
     if current_user.profession_id != 5
@@ -11,6 +12,23 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @url = @user.youtube.last(11)
+    if @user.youtube.present?
+      @url = @user.youtube.last(11)
+    else
+      @url = nil
+    end
+  end
+
+  def search
+  end
+
+  def result
+    @results = @p.result
+  end
+
+  private
+
+  def search_user
+    @p = User.ransack(params[:q])
   end
 end

@@ -1,0 +1,29 @@
+<div class="result-index text-center">
+  検索結果
+</div>
+<% if @results.length !=0 %>
+  <div class="card-index d-flex justify-content-center">
+    <div class="row">
+      <% @results.each do |user| %>
+        <div class="col-lg-4 col-sm-6">
+          <%= link_to user_path(user), class: "card" do %>
+            <% if user.image.blank? %>
+              <%= image_tag 'no_image.png', class: "bd-placeholder-img card-img-top img-index" %>
+            <% else %>
+              <%= image_tag user.image, class: "bd-placeholder-img card-img-top img-index" %>
+            <% end %>
+            <div class="card-body text-center">
+              <%= user.name %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="result-text text-center">
+    該当するユーザーはいませんでした
+  </div>
+<% end %>
+
+

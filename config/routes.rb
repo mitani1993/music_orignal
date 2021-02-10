@@ -3,7 +3,12 @@ Rails.application.routes.draw do
     controllers: { registrations: 'users/registrations',
                    omniauth_callbacks: 'users/omniauth_callbacks'}
   root 'top#index'
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show] do
+    collection do
+      get 'search'
+      get 'result'
+    end
+  end
   resources :relationships, only: [:create, :destroy]
   resources :matching, only: :index
   resources :chat_rooms, only: [:create, :show]
