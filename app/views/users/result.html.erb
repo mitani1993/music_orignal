@@ -1,6 +1,6 @@
-<h1>
+<div class="result-index text-center">
   検索結果
-</h1>
+</div>
 <% if @results.length !=0 %>
   <div class="card-index d-flex justify-content-center">
     <div class="row">
@@ -21,9 +21,9 @@
     </div>
   </div>
 <% else %>
-  該当するユーザーはいません
+  <div class="result-text text-center">
+    該当するユーザーはいませんでした
+  </div>
 <% end %>
-<br>
-<%= link_to 'ユーザー一覧へ戻る', users_path %>
 
 
