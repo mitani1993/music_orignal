@@ -30,6 +30,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def followed
+    @user = User.find(params[:id])
+  end
+
   private
 
   def search_user
