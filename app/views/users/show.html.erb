@@ -1,16 +1,31 @@
 <div class=" card-wrap d-flex justify-content-center">
   <div class="card text-center card-show">
+
     <% if @user.image.blank? %>
       <%= image_tag 'no_image.png', class: "bd-placeholder-img card-img-top" %>
     <% else %>
       <%= image_tag @user.image, class: "bd-placeholder-img card-img-top" %>
     <% end %>
+
     <div class="card-body">
-      <h1 class="card-title">
+      <h1 class="card-title show-title">
         <%= @user.name %>
       </h1>
+
+      <div class="show-like">
+        アプローチ: <%= @user.followers.size %>人
+      </div>
+
       <%= render "relationships/follow_button", user: @user %>
+
+      <% if current_user == @user %>
+        <div class="d-flex justify-content-around btn-show">
+          <%= link_to "アプローチ一覧", follower_user_path(@user), class: "btn btn-success" %>
+          <%= link_to "アピール一覧", followed_user_path(@user), class: "btn btn-success" %>
+        </div>
+      <% end %>
       <hr>
+
       <p class="card-text">
         <div class="show-name">活動形式</div>
         <div class="show-content">
