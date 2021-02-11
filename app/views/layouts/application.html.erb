@@ -12,10 +12,14 @@
   </head>
 
   <body>
-    <% unless %w[root user_session new_user_registration].any? { |name| current_page?(send("#{name}_path")) } %>
-      <%= render "layouts/navbar" %>
-    <% end %>
+    <% if user_signed_in? %>
+      <% unless %w[root user_session new_user_registration].any? { |name| current_page?(send("#{name}_path")) } %>
+        <%= render "layouts/navbar" %>
+      <% end %>
+    <% end %>  
+
     <%= yield %>
+    
     <div class="logout">
       <% if user_signed_in? %>
         <%= link_to destroy_user_session_path, method: :delete do %>

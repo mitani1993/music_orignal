@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
   #バリデーション
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
-  validates_format_of :password, with: PASSWORD_REGEX, on: :create, message: 'には英字と数字の両方を含めて半角で設定してください'
+  validates_format_of :password, with: PASSWORD_REGEX, on: :create, message: 'は英字と数字の両方を含めて半角で設定してください'
   validates :password, presence: true, on: :create
 
   with_options presence: true do

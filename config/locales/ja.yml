@@ -1,0 +1,7 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       name: 名前
+       area_id: 活動地域
+       profession_id: 属性
