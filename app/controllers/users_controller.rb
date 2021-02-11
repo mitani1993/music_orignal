@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :search_user, only: [:search, :result]
   before_action :set_user, only: [:show, :follower, :followed]
+  before_action :move_to_my_page, only: [:follower, :followed]
 
   def index
     if current_user.profession_id != 5
@@ -40,5 +41,9 @@ class UsersController < ApplicationController
 
   def search_user
     @p = User.ransack(params[:q])
+  end
+
+  def move_to_my_page
+    redirect_to user_path(current_user) unless @user == current_user
   end
 end
