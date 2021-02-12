@@ -126,6 +126,10 @@ RSpec.describe "ログイン", type: :system do
         expect(page).to have_content(@user.name)
         expect(page).to have_content(@user.area.name)
         expect(page).to have_content(@user.profession.name)
+        #アプローチ一覧ボタンがある
+        expect(page).to have_content("アプローチ一覧")
+        #アピール一覧ボタンがある
+        expect(page).to have_content("アピール一覧")
         #編集ボタンがある
         expect(page).to have_content("編集")
         #アピールボタンがない
@@ -141,6 +145,10 @@ RSpec.describe "ログイン", type: :system do
         expect(page).to have_content(@another_user.name)
         expect(page).to have_content(@another_user.area.name)
         expect(page).to have_content(@another_user.profession.name)
+        #アプローチ一覧ボタンがない
+        expect(page).to have_no_content("アプローチ一覧")
+        #アピール一覧ボタンがない
+        expect(page).to have_no_content("アピール一覧")
         #編集ボタンがない
         expect(page).to have_no_content("編集")
         #アピールボタンがある
