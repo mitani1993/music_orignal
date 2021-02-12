@@ -7,16 +7,16 @@ RSpec.describe "マッチング", type: :system do
     sleep 0.5
   end
 
-  context 'フォローされているとき' do 
-    it '他のユーザーをフォローしたときに一覧に表示される' do
+  context 'アプローチされているとき' do 
+    it '他のユーザーをアプローチしたときに一覧に表示される' do
       #他のサインインする
       sign_in(@another_user)
-      #他のユーザーが自分をフォローする
+      #他のユーザーが自分にアプローチする
       follow_user(@user)
       click_on 'ログアウト'
       #サインインする
       sign_in(@user)
-      #自分も他のユーザーをフォローする
+      #自分も他のユーザーにアプローチする
       follow_user(@another_user)
       #マッチング一覧ページにアクセスする
       visit matching_index_path(@user)
@@ -24,7 +24,7 @@ RSpec.describe "マッチング", type: :system do
       expect(page).to have_content(@another_user.name)
     end
 
-    it '他のユーザーをフォローしなければ一覧に表示されない' do
+    it '他のユーザーにアプローチしなければ一覧に表示されない' do
       sign_in(@another_user)
       follow_user(@user)
       click_on 'ログアウト'
@@ -37,9 +37,9 @@ RSpec.describe "マッチング", type: :system do
     end
   end
 
-  context 'フォローされていないとき' do
-    it '自分がフォローしていてもマッチング一覧に表示されない' do
-      #サインイン、フォロー
+  context 'アプローチされていないとき' do
+    it '自分がアプローチしていてもマッチング一覧に表示されない' do
+      #サインイン、アプローチ
       sign_in(@user)
       follow_user(@another_user)
       #マッチング一覧ページにアクセスする
