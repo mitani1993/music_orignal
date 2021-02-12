@@ -61,6 +61,7 @@ RSpec.describe "ログイン", type: :system do
   before do
     @user = FactoryBot.create(:user)
     @another_user = FactoryBot.create(:user)
+    sleep 1
   end
   context 'ログインができるとき' do
     it '保存されているユーザーの情報と合致すればログインができる' do
@@ -188,3 +189,77 @@ RSpec.describe "ログイン", type: :system do
   end
 end
 
+RSpec.describe "アピール、アプローチ一覧表示", type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+    @another_user = FactoryBot.create(:user)
+    sleep 1
+  end
+
+  context 'アプローチ一覧' do 
+    it '他のユーザーにアピールを受けたとき、一覧に表示される' do
+      #他のサインインする
+      sign_in(@another_user)
+      #他のユーザーが自分にアプローチする
+      follow_user(@user)
+      click_on 'ログアウト'
+      #サインインする
+      sign_in(@user)
+      #アプローチ一覧ページにアクセスする
+      visit follower_user_path(@user)
+      #アプローチしたユーザーの名前が表示されている
+      expect(page).to have_content(@another_user.name)
+    end
+    
+    it '他のユーザーがアピールしなければ一覧に表示されない' do
+      #サインイン
+      sign_in(@user)
+      #アプローチ一覧ページにアクセスする
+      visit follower_user_path(@user)
+      #アプローチ一覧に何も表示されていない
+      expect(page).to have_no_content(@another_user.name)
+    end
+  end
+  
+  context 'アピール一覧' do
+    it '他のユーザーにアピールすると、アピール一覧に表示される' do
+      #サインイン
+      sign_in(@user)
+      #他のユーザーにアピールする
+      follow_user(@another_user)
+      #アピール一覧ページにアクセスする
+      visit followed_user_path(@user)
+      #アピールしたユーザーの名前が表示されている
+      expect(page).to have_content(@another_user.name)
+    end
+
+    it '他のユーザーにアピールしなければ、アピール一覧に表示されない' do
+      #サインイン
+      sign_in(@user)
+      #アピール一覧ページにアクセスする
+      visit followed_user_path(@user)
+      #アピール一覧に何も表示されていない
+      expect(page).to have_no_content(@another_user.name)
+    end
+  end
+
+  context 'アクセスできないとき' do
+    it '他のユーザーのアプローチ一覧にはアクセスできない' do
+      #サインイン
+      sign_in(@user)
+      #他のユーザーのアプローチ一覧ページにアクセスする
+      visit follower_user_path(@another_user)
+      #マイページに遷移する
+      expect(current_path).to eq(user_path(@user))
+    end
+
+    it '他のユーザーのアピール一覧にはアクセスできない' do
+      #サインイン
+      sign_in(@user)
+      #他のユーザーのアピール一覧ページにアクセスする
+      visit followed_user_path(@another_user)
+      #マイページに遷移する
+      expect(current_path).to eq(user_path(@user))
+    end
+  end
+end

@@ -8,7 +8,7 @@ RSpec.describe "マッチング", type: :system do
   end
 
   context 'アプローチされているとき' do 
-    it '他のユーザーをアプローチしたときに一覧に表示される' do
+    it '他のユーザーにアピールしたときにマッチング一覧に表示される' do
       #他のサインインする
       sign_in(@another_user)
       #他のユーザーが自分にアプローチする
@@ -24,7 +24,7 @@ RSpec.describe "マッチング", type: :system do
       expect(page).to have_content(@another_user.name)
     end
 
-    it '他のユーザーにアプローチしなければ一覧に表示されない' do
+    it '他のユーザーにアピールしなければマッチせず、一覧に表示されない' do
       sign_in(@another_user)
       follow_user(@user)
       click_on 'ログアウト'
@@ -38,8 +38,8 @@ RSpec.describe "マッチング", type: :system do
   end
 
   context 'アプローチされていないとき' do
-    it '自分がアプローチしていてもマッチング一覧に表示されない' do
-      #サインイン、アプローチ
+    it '自分がアピールしていてもマッチせず一覧に表示されない' do
+      #サインイン、アピール
       sign_in(@user)
       follow_user(@another_user)
       #マッチング一覧ページにアクセスする
