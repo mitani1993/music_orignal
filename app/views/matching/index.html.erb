@@ -3,7 +3,7 @@
     <p class="matching-title ml-3">マッチング一覧</p>
     <p class="matching-num">マッチング中のお相手 <%= @match_users.size %>人</p>
 
-    <div class="matching__list">
+    <div class="matching__list" data-turbolinks="false" >
       <% unless @match_users.empty? %>
         <% @match_users.each do |user| %>
           <%= link_to chat_rooms_path(params: { user_id: user.id }), method: :post do %>
