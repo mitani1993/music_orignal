@@ -122,3 +122,4 @@ http://www.music-connect.jp/
 - belongs_to :user
 
 # ER図
+![alt](ER.png)
