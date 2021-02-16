@@ -1,5 +1,6 @@
 # アプリ名
 ### **Music Connect**
+![top](https://user-images.githubusercontent.com/69582233/108025311-9a726f80-7069-11eb-86fb-20113c3c4613.jpg)
 
 # 概要
 ミュージシャン、バンドマンやライブハウスなど音楽に携わる人を支援するマッチングサービス。
@@ -22,13 +23,17 @@ http://www.music-connect.jp/
 
 # 機能一覧
 - ユーザー登録・編集（gem devise, active hash）
+- ログイン、ログアウト機能(gem devise)
 - SNS認証 Google,Facebook(gem omniauth)
+![devise](https://user-images.githubusercontent.com/69582233/108025434-d1488580-7069-11eb-8306-c0c01e1feea6.jpg)
 - プロフィール画像の登録（ActiveStorage）
 - ユーザー一覧機能
 - フォロー機能(非同期)
 - マッチング機能
 - メッセージ機能(ActionCable)
 - ユーザー検索機能(gem ransack)
+![search](https://user-images.githubusercontent.com/69582233/108026098-0a352a00-706b-11eb-8071-43030a7e6657.jpg)
+
 
 # 使用技術
 ## フロントエンド
