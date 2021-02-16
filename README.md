@@ -1,4 +1,50 @@
-# テーブル設計
+# アプリ名
+### **Music Connect**
+<br>
+
+# URL
+http://www.music-connect.jp/
+<br>
+
+ログイン情報（テスト用）
+- Eメール: hoge@hoge.com
+- password: aaa111
+<br>
+
+# 制作背景（意図）
+
+<br>
+
+# 使用技術
+## フロントエンド
+- HTML
+- CSS(SCSS)
+- Bootstrap4
+- Javascript
+
+## バックエンド
+- Ruby2.6.5
+- Ruby on Rails 6.0.3.4
+
+## データベース
+- MySQL2
+
+## テスト
+- RSpec(SystemSpec)
+- FactoryBot
+- Faker
+
+## 本番環境
+- AWS(EC2, S3, Route53)
+- Nginx
+- Unicorn
+- Capistrano
+
+## ソース管理
+- GitHub, GitHubDesktop
+<br>
+
+# DB設計
 
 ## usersテーブル
 
@@ -74,3 +120,5 @@
 
 ### Association
 - belongs_to :user
+
+# ER図
