@@ -30,11 +30,11 @@ http://www.music-connect.jp/
 - ユーザー一覧機能
 - フォロー機能(非同期)
 - マッチング機能
-![match](https://user-images.githubusercontent.com/69582233/108026739-45842880-706c-11eb-872b-689fbcc0c272.jpg)
+![match](https://user-images.githubusercontent.com/69582233/108951453-5c013400-76ab-11eb-9627-245dee5c6a3b.gif)
 - メッセージ機能(ActionCable)
-![messa](https://user-images.githubusercontent.com/69582233/108026729-41f0a180-706c-11eb-8d22-f7df3ea564a7.jpg)
+![messe](https://user-images.githubusercontent.com/69582233/108951507-75a27b80-76ab-11eb-83e2-80328b8bb036.gif)
 - ユーザー検索機能(gem ransack)
-![search](https://user-images.githubusercontent.com/69582233/108026098-0a352a00-706b-11eb-8071-43030a7e6657.jpg)
+![検索](https://user-images.githubusercontent.com/69582233/108951411-45f37380-76ab-11eb-9f98-c6257e180616.gif)
 
 
 # 使用技術
