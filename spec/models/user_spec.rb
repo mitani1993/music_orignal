@@ -108,5 +108,12 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("属性は1以外の値にしてください")
       end
     end
+
+    context 'パスワードの検証' do
+      it 'パスワードが暗号化されていること' do
+        @user.password = 'aaa111'
+        expect(@user.encrypted_password).to_not eq @user.password
+      end
+    end
   end
 end
