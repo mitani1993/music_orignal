@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   describe '#create' do
     before do
       @user = FactoryBot.build(:user)
-      sleep 0.5
+      sleep 1
     end
 
     context 'うまくいく場合' do
@@ -108,11 +108,35 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("属性は1以外の値にしてください")
       end
     end
+  end
+
+  describe '検証' do
+    before do
+      @user = FactoryBot.create(:user)
+      @another_user = FactoryBot.create(:user)
+      sleep 1
+    end
 
     context 'パスワードの検証' do
       it 'パスワードが暗号化されていること' do
         @user.password = 'aaa111'
         expect(@user.encrypted_password).to_not eq @user.password
+      end
+    end
+
+    context 'フォローの検証' do
+      it'ユーザーが他のユーザーをフォロー、フォロー解除可能である' do
+        @user.follow(@another_user)
+        expect(@user.following?(@another_user)).to eq true
+        @user.unfollow(@another_user)
+        expect(@user.following?(@another_user)).to eq false
+      end
+    
+      it 'フォロー中のユーザーが削除されると、フォローが解消される' do
+        @user.follow(@another_user)
+        expect(@user.following?(@another_user)).to eq true
+        @user.destroy
+        expect(@user.following?(@another_user)).to eq false
       end
     end
   end
