@@ -32,10 +32,10 @@ http://www.music-connect.jp/
 
 ### 苦労した点
 - 非同期でのフォロー機能の実装<br>
-Qiita等の記事を参考にしながら、トライアンドエラーを繰り返し実装
+Qiita等の記事を参考にしながら、トライアンドエラーを繰り返し実装。
 
-- チャット機能の実装(ActionCable)
-binding.pryとdebuggerでデータの流れを追いながら少しずつ実装
+- チャット機能の実装(ActionCable)<br>
+binding.pryとdebuggerでデータの流れを追いながら少しずつ実装。
 
 
 # 機能一覧
